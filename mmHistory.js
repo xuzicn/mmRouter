@@ -259,11 +259,11 @@ define(["avalon"], function(avalon) {
                 return
             }
             var hash = href.replace(prefix, "").trim()
-            if(!(href.indexOf(prefix) === 0 && hash !== "")) {
+            if(href.indexOf(prefix) !== 0) {
                 hash = routeElementJudger(target, href)
                 if(hash === true) hash = href
             }
-            if (hash) {
+            if (hash || href == prefix) {
                 event.preventDefault()
                 avalon.router && avalon.router.navigate(hash)
             }
